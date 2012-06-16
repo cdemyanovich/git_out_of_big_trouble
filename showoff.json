@@ -1,0 +1,10 @@
+{
+  "name": "Git Out of Big Trouble",
+  "sections": [
+    { "section": "intro" },
+    { "section": "review" },
+    { "section": "trouble" },
+    { "section": "questions" },
+    { "section": "references" }
+  ]
+}
