@@ -1,13 +1,15 @@
 !SLIDE
 # Problem
-## You want to split changes into several commits
+## You want to split in-progress changes into several commits
 
-!SLIDE commandline
-## `add` in interactive mode
+!SLIDE
+## `git add`
 
-    $ git add --interactive | -i
+!SLIDE bullets
+## Two options
 
-    $ git add --patch | -p
+* `-i, --interactive`
+* `-p, --patch`
 
 !SLIDE smaller
 
