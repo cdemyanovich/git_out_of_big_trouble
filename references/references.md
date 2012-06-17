@@ -3,24 +3,24 @@
 
 !SLIDE center
 ### git-scm.com
-![Git](../images/Git-Logo-2Color_small.png)
+![Git](images/Git-Logo-2Color_small.png)
 
 !SLIDE center
 ### pragprog.com/book/pg_git/pragmatic-guide-to-git
-![Pragmatic Guide to Git](../images/pg_git_small.jpg)
+![Pragmatic Guide to Git](images/pg_git_small.jpg)
 
 !SLIDE center
 ### git-scm.com/book
 #### (free)
-![Pro Git](../images/pro_git.jpg)
+![Pro Git](images/pro_git.jpg)
 
 !SLIDE center
 ### pragprog.com/book/tsgit/pragmatic-version-control-using-git
-![Pragmatic Version Control Using Git](../images/tsgit_small.jpg)
+![Pragmatic Version Control Using Git](images/tsgit_small.jpg)
 
 !SLIDE center
 ### help.github.com
-![GitHub Help](../images/help.github.com.png)
+![GitHub Help](images/help.github.com.png)
 
 !SLIDE center
 ## `cheat` gem
@@ -51,9 +51,9 @@
 
 !SLIDE center
 ### https://github.com/icefox/git-achievements
-![Git Achievements](../images/git_achievements.png)
+![Git Achievements](images/git_achievements.png)
 
 !SLIDE center
 ### gitimmersion.com/
-![Git Immersion](../images/git_immersion.png)
+![Git Immersion](images/git_immersion.png)
 
