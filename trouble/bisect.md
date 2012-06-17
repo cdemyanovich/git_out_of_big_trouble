@@ -10,13 +10,15 @@
 ![binary search](images/binary_search.png)
 
 !SLIDE commandline incremental small
+## Short Help
 
     $ git bisect
     Usage: git bisect [help|start|bad|good|skip|next|reset|visualize|replay|log|run]
 
 !SLIDE commandline incremental small
+## Long Help
 
-    $ git bisect -h
+    $ git bisect help
     Usage: git bisect [help|start|bad|good|skip|next|reset|visualize|replay|log|run]
 
     git bisect help
@@ -45,11 +47,22 @@
     Please use "git help bisect" to get the full man page.
 
 !SLIDE bullets incremental
+## Good or bad?
+
+* `git bisect good`
+* `git bisect bad`
+
+!SLIDE bullets incremental
+## Automation
 ### `git bisect run <script> <script-arguments>`
 
 * `0` if commit is good
-* `125` if commit cannot be tested
 * `1-127` if commit is bad
+* `125` if commit cannot be tested
+
+!SLIDE
+## Call off the search
+### `git bisect reset`
 
 !SLIDE center
 ![caution](images/caution.png)
