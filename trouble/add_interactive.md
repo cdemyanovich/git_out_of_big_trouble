@@ -30,3 +30,4 @@
 
 !SLIDE
 ## Demo
+### TODO: of what? A slide from first talk? Prepare a file or files to be able to show patch mode with splitting chunks into smaller chunks
