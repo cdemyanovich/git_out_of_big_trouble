@@ -1,3 +1,11 @@
+TODO
+====
+
+* choose order of topics for good flow
+* determine demo for interactive rebase
+* add images on Q & A page
+* add preshow (logos, SHAs, trees, etc.; or, something unique to me, e.g., hockey)
+
 interactive add
 ===============
 
