@@ -3,7 +3,7 @@
 ## Where did a defect first occur?
 
 !SLIDE
-# `git bisect`
+## `git bisect`
 
 !SLIDE center
 ## Binary search
