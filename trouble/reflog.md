@@ -9,8 +9,8 @@
 !SLIDE bullets incremental
 ## How do we lose commits?
 
-* `git reset --hard <commit>`
 * delete a commit during interactive rebase
+* `git reset --hard <commit>`
 
 !SLIDE bullets incremental
 ## reflog Maintenance
