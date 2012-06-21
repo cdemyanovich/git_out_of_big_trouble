@@ -22,4 +22,4 @@ TODO: add images (from Pro Git?)
 
 !SLIDE
 ## Demo
-### "There can be only one."
+### Squashing WIPs
