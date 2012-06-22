@@ -16,7 +16,7 @@
     Usage: git bisect [help|start|bad|good|skip|next|reset|visualize|replay|log|run]
 
 !SLIDE commandline incremental small
-## Long Help
+## Longer Help
 
     $ git bisect help
     Usage: git bisect [help|start|bad|good|skip|next|reset|visualize|replay|log|run]
