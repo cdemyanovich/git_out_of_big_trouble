@@ -66,11 +66,11 @@
 
 !SLIDE center
 ![caution](images/caution.png)
-### intentionally "bad" commits
+### Intentionally "bad" commits
 
 !SLIDE center
 ![caution](images/caution.png)
-### What about the database at each checkout?
+### The database
 
 !SLIDE
 ## Demo
