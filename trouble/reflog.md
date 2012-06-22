@@ -12,10 +12,6 @@
 
 `# If you remove a line here THAT COMMIT WILL BE LOST.`
 
-!SLIDE
-## How do we lose commits?
-### `git reset --hard <commit>`
-
 !SLIDE bullets incremental
 ## Maintenance
 
