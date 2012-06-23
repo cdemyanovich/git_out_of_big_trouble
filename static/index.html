@@ -1,0 +1,572 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Git Out of Big Trouble</title>
+
+  <meta name="viewport" content="width=device-width"/>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+  <script type="text/javascript" src="./js/coffee-script.js"></script>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
+
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+      setupPreso(false, './');
+  });
+  </script>
+
+</head>
+
+<body>
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">z, ?</td><td>toggle help (this)</td></tr>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">shift-space, &larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>toggle debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c, t</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">n</td><td>toggle notes</td></tr>
+    <tr><td class="key">p</td><td>run preshow</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content" ref="intro/intro/1">
+<h1>Git Out of More Trouble</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro/intro/2">
+<p><img src="./file/intro/images/Git-Icon-1788C_small.png" alt="Git logo"/> 1.7.11.1</p>
+
+<p><img src="./file/intro/images/InstallAssistant.175x175-75.png" alt="Lion"/> 10.7</p>
+
+<p><img src="./file/intro/images/iTerm_icon_small.jpg" alt="iTerm2"/> command line</p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="intro/intro/3">
+<h3>git-scm.com/downloads</h3>
+
+<p><img src="./file/intro/images/other_tools.png" title="Other Tools" alt="Other Tools"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/add_interactive/1">
+<h1>Problem</h1>
+
+<h2>You want to split in-progress changes into several commits</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/add_interactive/2">
+<h2><code>git add</code></h2></div>
+</div><div class="slide" data-transition="none"><div class="content bullets" ref="trouble/add_interactive/3">
+<h2>Two options</h2>
+
+<ul>
+<li><code>-i, --interactive</code></li>
+<li><code>-p, --patch</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content code smaller" ref="trouble/add_interactive/4">
+<pre><code>$ git add -i
+           staged     unstaged path
+  1:    unchanged        +1/-1 trouble/add_interactive.md
+
+*** Commands ***
+  1: status   2: update   3: revert   4: add untracked
+  5: patch    6: diff     7: quit     8: help
+What now&gt; p
+           staged     unstaged path
+  1:    unchanged        +1/-1 trouble/add_interactive.md
+Patch update&gt;&gt; 1
+           staged     unstaged path
+* 1:    unchanged        +1/-1 trouble/add_interactive.md
+Patch update&gt;&gt;
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content code smaller" ref="trouble/add_interactive/5">
+<pre><code>diff --git a/trouble/add_interactive.md b/trouble/add_interactive.md
+index 43c1717..ea061a2 100644
+--- a/trouble/add_interactive.md
++++ b/trouble/add_interactive.md
+@@ -6,7 +6,7 @@
+ ## `git add`
+
+ !SLIDE bullets
+-## Two options
++## Two common options
+
+ * `-i, --interactive`
+ * `-p, --patch`
+Stage this hunk [y,n,q,a,d,/,e,?]? ?
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="trouble/add_interactive/6">
+<pre><code>y - stage this hunk
+n - do not stage this hunk
+q - quit; do not stage this hunk nor any of the remaining ones
+a - stage this hunk and all later hunks in the file
+d - do not stage this hunk nor any of the later hunks in the file
+g - select a hunk to go to
+/ - search for a hunk matching the given regex
+j - leave this hunk undecided, see next undecided hunk
+J - leave this hunk undecided, see next hunk
+k - leave this hunk undecided, see previous undecided hunk
+K - leave this hunk undecided, see previous hunk
+s - split the current hunk into smaller hunks
+e - manually edit the current hunk
+? - print help
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content code smaller" ref="trouble/add_interactive/7">
+<pre><code>diff --git a/trouble/add_interactive.md b/trouble/add_interactive.md
+index 43c1717..ea061a2 100644
+--- a/trouble/add_interactive.md
++++ b/trouble/add_interactive.md
+@@ -6,7 +6,7 @@
+ ## `git add`
+
+ !SLIDE bullets
+-## Two options
++## Two common options
+
+ * `-i, --interactive`
+ * `-p, --patch`
+Stage this hunk [y,n,q,a,d,/,e,?]? y
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content code smaller" ref="trouble/add_interactive/8">
+<pre><code>*** Commands ***
+  1: status   2: update   3: revert   4: add untracked
+  5: patch    6: diff     7: quit     8: help
+What now&gt; q
+Bye.
+$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD &lt;file&gt;..." to unstage)
+#
+#   modified:   trouble/add_interactive.md
+#
+</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/bisect/1">
+<h1>Problem</h1>
+
+<h2>Where did a defect first occur?</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/bisect/2">
+<h2><code>git bisect</code></h2></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="trouble/bisect/3">
+<h2>Binary search</h2>
+
+<p><img src="./file/trouble/images/binary_search.png" alt="binary search"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content commandline incremental small" ref="trouble/bisect/4">
+<h2>Short Help</h2>
+
+<pre><code><code class="command">$ git bisect</code>
+<code class="result">Usage: git bisect [help|start|bad|good|skip|next|reset|visualize|replay|log|run]
+</code></code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content commandline incremental small" ref="trouble/bisect/5">
+<h2>Longer Help</h2>
+
+<pre><code><code class="command">$ git bisect help</code>
+<code class="result">Usage: git bisect [help|start|bad|good|skip|next|reset|visualize|replay|log|run]
+
+git bisect help
+    print this long help message.
+git bisect start [--no-checkout] [&lt;bad&gt; [&lt;good&gt;...]] [--] [&lt;pathspec&gt;...]
+    reset bisect state and start bisection.
+git bisect bad [&lt;rev&gt;]
+    mark &lt;rev&gt; a known-bad revision.
+git bisect good [&lt;rev&gt;...]
+    mark &lt;rev&gt;... known-good revisions.
+git bisect skip [(&lt;rev&gt;|&lt;range&gt;)...]
+    mark &lt;rev&gt;... untestable revisions.
+git bisect next
+    find next bisection to test and check it out.
+git bisect reset [&lt;commit&gt;]
+    finish bisection search and go back to commit.
+git bisect visualize
+    show bisect status in gitk.
+git bisect replay &lt;logfile&gt;
+    replay bisection log.
+git bisect log
+    show bisect log.
+git bisect run &lt;cmd&gt;...
+    use &lt;cmd&gt;... to automatically bisect.
+
+Please use "git help bisect" to get the full man page.
+</code></code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="trouble/bisect/6">
+<h2>Good or bad?</h2>
+
+<ul>
+<li><code>git bisect good</code></li>
+<li><code>git bisect bad</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="trouble/bisect/7">
+<h2>Automation</h2>
+
+<h3><code>git bisect run &lt;script&gt; &lt;script-arguments&gt;</code></h3>
+
+<ul>
+<li><code>0</code> if commit is good</li>
+<li><code>1-127</code> if commit is bad</li>
+<li><code>125</code> if commit cannot be tested</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/bisect/8">
+<h2>Call off the search</h2>
+
+<h3><code>git bisect reset</code></h3></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="trouble/bisect/9">
+<p><img src="./file/trouble/images/caution.png" alt="caution"/></p>
+
+<h3>Intentionally "bad" commits</h3></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="trouble/bisect/10">
+<p><img src="./file/trouble/images/caution.png" alt="caution"/></p>
+
+<h3>The database</h3></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/bisect/11">
+<h2>Demo</h2>
+
+<h3>This slide deck</h3></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/cherry_pick/1">
+<h1>Problem</h1>
+
+<h2>You want a commit from another branch</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/cherry_pick/2">
+<h2><code>git cherry-pick</code></h2></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="trouble/cherry_pick/3">
+<h2>Common options</h2>
+
+<ul>
+<li><code>-e, --edit</code></li>
+<li><code>-n, --no-commit</code></li>
+<li><code>-s, --signoff</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="trouble/cherry_pick/4">
+<h2>Sequencers</h2>
+
+<ul>
+<li><code>--continue</code></li>
+<li><code>--quit</code></li>
+<li><code>--abort</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/cherry_pick/5">
+<h2>Example</h2></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="trouble/cherry_pick/6">
+<p><img src="./file/trouble/images/18333fig0526-tn.png" alt="before cherry-pick"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content commandline smaller" ref="trouble/cherry_pick/7">
+<pre><code><code class="command">$ git cherry-pick e43a6fd3e94888d76779ad79fb568ed180e5fcdf</code>
+<code class="result">Finished one cherry-pick.
+[master]: created a0a41a9: "More friendly message when locking the index fails."
+ 3 files changed, 17 insertions(+), 3 deletions(-)
+</code></code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="trouble/cherry_pick/8">
+<p><img src="./file/trouble/images/18333fig0527-tn.png" alt="after cherry-pick"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="trouble/cherry_pick/9">
+<h2>5.3 Distributed Git - Maintaining a Project</h2>
+
+<h3>http://git-scm.com/book/en/Distributed-Git-Maintaining-a-Project</h3>
+
+<p><img src="./file/trouble/images/pro_git.jpg" alt="Pro Git"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/find_changed_content/1">
+<h1>Problem</h1>
+
+<h2>You want to search history for content</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/find_changed_content/2">
+<h2><code>git grep</code></h2></div>
+</div><div class="slide" data-transition="none"><div class="content commandline smaller" ref="trouble/find_changed_content/3">
+<h2>A "few" options</h2>
+
+<pre><code><code class="command">$ git help grep</code>
+<code class="result">...
+SYNOPSIS
+   git grep [-a | --text] [-I] [-i | --ignore-case] [-w | --word-regexp]
+       [-v | --invert-match] [-h|-H] [--full-name]
+       [-E | --extended-regexp] [-G | --basic-regexp]
+       [-P | --perl-regexp]
+       [-F | --fixed-strings] [-n | --line-number]
+       [-l | --files-with-matches] [-L | --files-without-match]
+       [(-O | --open-files-in-pager) [&lt;pager&gt;]]
+       [-z | --null]
+       [-c | --count] [--all-match] [-q | --quiet]
+       [--max-depth &lt;depth&gt;]
+       [--color[=&lt;when&gt;] | --no-color]
+       [--break] [--heading] [-p | --show-function]
+       [-A &lt;post-context&gt;] [-B &lt;pre-context&gt;] [-C &lt;context&gt;]
+       [-W | --function-context]
+       [-f &lt;file&gt;] [-e] &lt;pattern&gt;
+       [--and|--or|--not|(|)|-e &lt;pattern&gt;...]
+       [ [--exclude-standard] [--cached | --no-index | --untracked] | &lt;tree&gt;...]
+       [--] [&lt;pathspec&gt;...]
+...
+</code></code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="trouble/find_changed_content/4">
+<h2>Concise help</h2>
+
+<ul>
+<li>doesn't exist (no <code>--help</code>)</li>
+<li>but, fake it with <code>-h</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content commandline incremental small" ref="trouble/find_changed_content/5">
+<pre><code><code class="command">$ git grep -h</code>
+<code class="result">usage: git grep [options] [-e] &lt;pattern&gt; [&lt;rev&gt;...] [[--] &lt;path&gt;...]
+
+    --cached              search in index instead of in the work tree
+    --no-index            finds in contents not managed by git
+    --untracked           search in both tracked and untracked files
+    --exclude-standard    search also in ignored files
+
+    ...
+    -h                    don't show filenames
+    ...
+</code></code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/find_changed_content/6">
+<h2>A good default</h2>
+
+<p><code>$ git grep --break --heading --line-number --ignore-case 'bisect'</code></p>
+
+<p>(add <code>--color</code> if not using <code>color.ui</code> in config)</p></div>
+</div><div class="slide" data-transition="none"><div class="content commandline" ref="trouble/find_changed_content/7">
+<h2>Tip</h2>
+
+<h3>Assign an alias</h3>
+
+<pre><code><code class="command">$ git config --list</code>
+<code class="result">...
+[alias]
+    find = grep --break --heading --line-number --ignore-case
+...
+</code></code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content commandline incremental" ref="trouble/find_changed_content/8">
+<pre><code><code class="command">$ git find 'bisect'</code>
+<code class="result">trouble/bisect.md
+6:# `git bisect`
+15:    $ git bisect
+16:    Usage: git bisect [help|start|bad|good|skip|next|reset|visualize|replay|log|run]
+...
+
+trouble/find_changed_file.md
+10:    $ git log -- trouble/bisect.md
+15:        Add note about database to bisect
+21:        flesh out bisect
+...
+</code></code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/find_changed_content/9">
+<h2>Demo</h2>
+
+<h3>This slide deck</h3></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/find_changed_file/1">
+<h1>Problem</h1>
+
+<h2>You want to know which commits changed a file</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/find_changed_file/2">
+<h2><code>git log -- &lt;path&gt;</code></h2></div>
+</div><div class="slide" data-transition="none"><div class="content commandline incremental" ref="trouble/find_changed_file/3">
+<pre><code><code class="command">$ git log -- trouble/bisect.md</code>
+<code class="result">commit 00a439874d7199f49d12068133fcf956c1c675a5
+Author: Craig Demyanovich &lt;cdemyanovich@gmail.com&gt;
+Date:   Sun Jun 17 13:25:41 2012 -0500
+
+    Add note about database to bisect
+
+commit 06951596948555c32caf3ab16aaf6043cc8b1436
+Author: Craig Demyanovich &lt;cdemyanovich@gmail.com&gt;
+Date:   Sat Jun 16 22:36:52 2012 -0500
+
+    flesh out bisect
+
+commit f339e7b867c9fb768f8925b1ac9943fb8f2a8f72
+Author: Craig Demyanovich &lt;cdemyanovich@gmail.com&gt;
+Date:   Sat Jun 16 20:08:46 2012 -0500
+
+    Rough draft of bisect
+</code></code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content commandline incremental" ref="trouble/find_changed_file/4">
+<pre><code><code class="command">$ git log -p -- trouble/bisect.md</code>
+<code class="result">commit 00a439874d7199f49d12068133fcf956c1c675a5
+Author: Craig Demyanovich &lt;cdemyanovich@gmail.com&gt;
+Date:   Sun Jun 17 13:25:41 2012 -0500
+
+    Add note about database to bisect
+
+diff --git a/trouble/bisect.md b/trouble/bisect.md
+index ce84d0f..c91667d 100644
+--- a/trouble/bisect.md
++++ b/trouble/bisect.md
+@@ -68,6 +68,10 @@
+ ![caution](images/caution.png)
+ ### intentionally "bad" commits
+
++!SLIDE center
++![caution](images/caution.png)
++### What about the database at each checkout?
++
+ !SLIDE
+ ## Demo
+ ### This slide deck
+...
+</code></code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/rebase_interactive/1">
+<h1>Problem</h1>
+
+<h2>You have many commits; you want one</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/rebase_interactive/2">
+<h2><code>git rebase --interactive</code></h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/rebase_interactive/3">
+<h2>Step-by-step</h2></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="trouble/rebase_interactive/4">
+<h2>Sequencers</h2>
+
+<ul>
+<li><code>--continue</code></li>
+<li><code>--skip</code></li>
+<li><code>--abort</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="trouble/rebase_interactive/5">
+<p><img src="./file/trouble/images/ts.20120125t101709.2x4brick_red.jpg" alt="LEGO brick"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/rebase_interactive/6">
+<h2>Demo</h2>
+
+<h3>Squashing WIPs</h3></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/reflog/1">
+<h1>Problem</h1>
+
+<h2>You lost a commit</h2>
+
+<h3>(or did you?)</h3></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/reflog/2">
+<h2><code>git reflog</code></h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/reflog/3">
+<h2>How do we lose commits?</h2>
+
+<h3>Delete them during interactive rebase</h3>
+
+<p><code># If you remove a line here THAT COMMIT WILL BE LOST.</code></p></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="trouble/reflog/4">
+<h2>Maintenance</h2>
+
+<ul>
+<li><strong>manual</strong> with the <code>expire</code> or <code>delete</code> subcommands</li>
+<li><strong>semi-automatic</strong> with <code>git gc</code></li>
+<li><strong>automatic</strong> if garbage collection runs</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="trouble/reflog/5">
+<h2>"Emergency fund"</h2>
+
+<ul>
+<li>keeps entries for last <strong>90 days</strong> if <code>git gc</code> runs</li>
+<li>see <code>git help gc</code> for options like <code>gc.reflogExpire</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="trouble/reflog/6">
+<h2>Demo</h2>
+
+<h3>Artisan</h3></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="questions/questions">
+<h1>Q &amp; A</h1>
+
+<h2>Here on Friday afternoons</h2>
+
+<h2>craig@8thlight.com</h2>
+
+<h2>@demmer12</h2></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="references/references/1">
+<h1>References</h1></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="references/references/2">
+<h3>git-scm.com</h3>
+
+<p><img src="./file/references/images/Git-Logo-2Color_small.png" alt="Git"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="references/references/3">
+<h3>pragprog.com/book/pg_git/pragmatic-guide-to-git</h3>
+
+<p><img src="./file/references/images/pg_git_small.jpg" alt="Pragmatic Guide to Git"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="references/references/4">
+<h3>git-scm.com/book</h3>
+
+<h4>(free)</h4>
+
+<p><img src="./file/references/images/pro_git.jpg" alt="Pro Git"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="references/references/5">
+<h3>pragprog.com/book/tsgit/pragmatic-version-control-using-git</h3>
+
+<p><img src="./file/references/images/tsgit_small.jpg" alt="Pragmatic Version Control Using Git"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="references/references/6">
+<h3>help.github.com</h3>
+
+<p><img src="./file/references/images/help.github.com.png" alt="GitHub Help"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="references/references/7">
+<h2><code>cheat</code> gem</h2>
+
+<h3>cheat.errtheblog.com/</h3></div>
+</div><div class="slide" data-transition="none"><div class="content commandline incremental" ref="references/references/8">
+<pre><code><code class="command">$ gem install cheat</code>
+<code class="result">Fetching: cheat-1.3.0.gem (100%)
+Successfully installed cheat-1.3.0
+1 gem installed
+
+</code><code class="command">$ cheat git</code>
+<code class="result">
+git:
+  Setup
+  -----
+
+  git clone &lt;repo&gt;
+    clone the repository specified by &lt;repo&gt;; this is similar to "checkout" in
+    some other version control systems such as Subversion and CVS
+
+  Add colors to your ~/.gitconfig file:
+
+    [color]
+      ui = auto
+  ...
+</code></code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="references/references/9">
+<h3>https://github.com/icefox/git-achievements</h3>
+
+<p><img src="./file/references/images/git_achievements.png" alt="Git Achievements"/></p></div>
+</div><div class="slide" data-transition="none"><div class="content center" ref="references/references/10">
+<h3>gitimmersion.com/</h3>
+
+<p><img src="./file/references/images/git_immersion.png" alt="Git Immersion"/></p></div>
+</div></div>
+
+</body>
+</html>
